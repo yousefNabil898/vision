@@ -1,5 +1,5 @@
-import { NgClass } from '@angular/common';
-import { Component, HostListener, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { isPlatformBrowser, NgClass } from '@angular/common';
+import { Component, HostListener, Inject, inject, OnChanges, OnInit, PLATFORM_ID, SimpleChanges } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/my-translate.service';
@@ -12,6 +12,8 @@ import { MyTranslateService } from '../../core/services/my-translate.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   isAdmin: boolean = false
   private readonly _MyTranslateService = inject(MyTranslateService)
   change(lang: string): void {
@@ -30,12 +32,9 @@ export class NavbarComponent implements OnInit {
     this.isScrolled = scrollOffset > 25;
   }
   isadminCheck() {
-    if (typeof localStorage !== 'undefined') {
-      if (localStorage.getItem('admin') == 'true') {
-        this.isAdmin = true;
-      } else {
-        this.isAdmin = false;
-      }
+    if (isPlatformBrowser(this.platformId)) {
+      const adminStatus = localStorage.getItem('admin');
+      this.isAdmin = (adminStatus === 'true');
     }
   }
 
