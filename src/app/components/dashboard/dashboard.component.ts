@@ -92,6 +92,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     const files: FileList = event.target.files;
     if (files.length > 0) {
       this.selectedFiles.set(Array.from(files));  // تحويل FileList إلى Array وتعيينها في الـ Signal
+    }else{
+      this._ToastrService.info('Please select at least one image.');
     }
   }
 
@@ -107,3 +109,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();  // إلغاء جميع الاشتراكات لمنع تسرب الذاكرة
   }
 }
+
+
+
+ 

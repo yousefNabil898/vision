@@ -11,33 +11,39 @@ export class MyTranslateService {
   isLeft: WritableSignal<boolean> = signal(true);
 
   constructor() {
+    // Check if the platform is a browser
     if (isPlatformBrowser(this._platId)) {
-      let lang = localStorage.getItem("lang");
-      this._TranslateService.setDefaultLang("en");
+      let lang = localStorage.getItem('lang');  // Get stored language
+      this._TranslateService.setDefaultLang('en');  // Set default language as English
 
+      // If a language is stored, use it
       if (lang !== null) {
         this._TranslateService.use(lang);
       }
 
+      // Adjust the direction of the layout
       this.changeDirection();
     }
   }
 
+  // Method to change the direction of the layout (LTR/RTL) based on the language
   changeDirection(): void {
     let savedTranslations = localStorage.getItem('lang');
     if (savedTranslations === 'en') {
-      document.documentElement.dir = "ltr";
-      this.isLeft.set(true);
+      document.documentElement.dir = 'ltr';  // Set direction to LTR
+      this.isLeft.set(true);  // Update signal to reflect LTR
     } else if (savedTranslations === 'ar') {
-      document.documentElement.dir = "rtl";
-      this.isLeft.set(false);
+      document.documentElement.dir = 'rtl';  // Set direction to RTL
+      this.isLeft.set(false);  // Update signal to reflect RTL
     }    
   }
-  changeLang(lang: string) {
+
+  // Method to change the language and adjust direction accordingly
+  changeLang(lang: string): void {
     if (isPlatformBrowser(this._platId)) {
-      localStorage.setItem("lang", lang)
-      this._TranslateService.use(lang)
-      this.changeDirection()
+      localStorage.setItem('lang', lang);  // Store the new language in localStorage
+      this._TranslateService.use(lang);  // Use the new language for translations
+      this.changeDirection();  // Change direction after changing language
     }
   }
 }

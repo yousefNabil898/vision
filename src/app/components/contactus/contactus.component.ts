@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ContactusComponent {
   constructor(private renderer: Renderer2, private el: ElementRef) { }
-  private _ToastrService =inject(ToastrService)
+  private _ToastrService = inject(ToastrService)
 
   form: IformDetailes = {
     name: '',
@@ -37,16 +37,19 @@ export class ContactusComponent {
 
   }
   submitForm() {
+    if (this.form.name && this.form.phone && this.form.country && this.form.email) {
+      emailjs.send('service_rndzu0c', 'template_pgua6cr', { ...this.form }, {
+        publicKey: 'eZaj--Qdt3Nx_HDQE'
+      }).then(() => {
+        this._ToastrService.success('Your message has been sent!');
+        this.clearForm()
+
+      })
+    } else {
+      this._ToastrService.info('All fields are required.');
+    }
 
 
-    console.log(this.form);
-    emailjs.send('service_rndzu0c', 'template_pgua6cr', { ...this.form }, {
-      publicKey: 'eZaj--Qdt3Nx_HDQE'
-    }).then(() => {
-      this._ToastrService.success('Your message has been sent!');
-      this.clearForm()
-
-    })
 
 
 
