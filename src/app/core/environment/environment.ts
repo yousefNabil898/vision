@@ -1,12 +1,15 @@
 export const environment = {
     production: false,
     firebase: {
-        apiKey: "AIzaSyCGthwdnuNy0g3sY_1xiDP0EYUfkmRv1Bk",
-        authDomain: "vision-89cef.firebaseapp.com",
-        projectId: "vision-89cef",
-        storageBucket: "vision-89cef.appspot.com",
-        messagingSenderId: "383120800887",
-        appId: "1:383120800887:web:07c4a89632e76e64231a72",
-        measurementId: "G-CY42PSZYXV"
-    }
+        apiKey: "AIzaSyBH7vnQMkM3s9OHcEXcnBh5haqeyboQX9w",
+        authDomain: "vision-2cf55.firebaseapp.com",
+        projectId: "vision-2cf55",
+        storageBucket: "vision-2cf55.firebasestorage.app",
+        messagingSenderId: "234452688266",
+        appId: "1:234452688266:web:26b557c71949fe9d2b7c73",
+        measurementId: "G-NYJVRJZVVF"
+    },
+    cloudName: 'dun8krf96',
+    apiKey: '238539544758296',
+    apiSecret: 'FQ4QihlJh1EwKsFKKynRGneKGwM'
 };

@@ -2,7 +2,8 @@
 <nav [ngClass]="{'scrolled': isScrolled}" class="navbar navbar-dark fixed-top shadow bg-dark-blue navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" routerLink="home">
-      <img loading="lazy" src="./assets/images/11zon_compressed/vision-nav-logo_13_11zon.webp" alt="logo" width="150" height="50">
+      <img loading="lazy" src="./assets/images/11zon_compressed/vision-nav-logo.webp" alt="logo" width="150"
+        height="50">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
       aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -10,13 +11,13 @@
     </button>
 
     <!-- offcanvas -->
-    <div class="offcanvas offcanvas-end bg-dark-blue" tabindex="-1" id="offcanvasNavbar"
+    <div class="offcanvas offcanvas-end w-75 bg-dark-blue" tabindex="-1" id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Vision</h5>
         <button type="button" class="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body">
+      <div class="offcanvas-body " >
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="nav-link-active" routerLink="home">{{ 'navbar.home' | translate }}</a>
@@ -36,6 +37,7 @@
             <a class="nav-link" routerLinkActive="nav-link-active" routerLink="contact">{{ 'navbar.contact_us' |
               translate }}</a>
           </li>
+      
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="nav-link-active" routerLink="aboutus">{{ 'navbar.about_us' | translate
               }}</a>
@@ -54,15 +56,15 @@
 
           <!-- Language switcher -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ 'navbar.lang' | translate }}
-            </a>
+            </button>
             <ul class="dropdown-menu">
               <li (click)="change('en')">
-                <a class="dropdown-item cr">{{ 'navbar.en' | translate }}</a>
+                <button class="dropdown-item cr">{{ 'navbar.en' | translate }}</button>
               </li>
               <li (click)="change('ar')">
-                <a class="dropdown-item cr">{{ 'navbar.ar' | translate }}</a>
+                <button class="dropdown-item cr">{{ 'navbar.ar' | translate }}</button>
               </li>
             </ul>
           </li>

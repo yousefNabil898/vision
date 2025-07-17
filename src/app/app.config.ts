@@ -19,13 +19,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes, withViewTransitions()), provideClientHydration(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
+  provideFirebaseApp(() => initializeApp(environment.firebase)),
+  provideFirestore(() => getFirestore()),
+  provideStorage(() => getStorage()),
   provideAnimations(),
-  provideToastr(), 
+  provideToastr(),
   provideHttpClient(withFetch(), withInterceptors([loadingInterceptor])),
-  
+
   importProvidersFrom(
     TranslateModule.forRoot({
       defaultLanguage: 'en',
@@ -34,7 +34,7 @@ export const appConfig: ApplicationConfig = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }),NgxSpinnerModule
+    }), NgxSpinnerModule
   )
   ]
 };

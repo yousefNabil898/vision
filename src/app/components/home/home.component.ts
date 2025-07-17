@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { NgwWowService } from 'ngx-wow';
+
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,8 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  
+private x =inject(NgwWowService)
   mainSlider: OwlOptions = {
     loop: true,
     mouseDrag: true,

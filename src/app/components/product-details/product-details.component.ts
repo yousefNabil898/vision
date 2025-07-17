@@ -6,11 +6,12 @@ import { Iproduct } from '../../core/interfaces/iproduct';
 import { NgwWowService } from 'ngx-wow';
 import { Subscription } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CarouselModule,TranslateModule],
+  imports: [CarouselModule, TranslateModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -18,7 +19,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   private readonly _ActivatedRoute = inject(ActivatedRoute);
   private readonly _productservice = inject(ProdctsService);
   private readonly _NgwWowService = inject(NgwWowService);
-
+  private readonly _CartService = inject(CartService);
+  cartID: string[] = []
   // تحويل detailesProduct إلى Signal
   detailesProduct: Iproduct | undefined = {} as Iproduct;
   customOptionsDetailes: OwlOptions = {
@@ -59,6 +61,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
     // تفعيل تأثيرات wow.js
     this._NgwWowService.init();
+  this.cartID =  this._CartService.getCart()
+  console.log(this.cartID);
+  
   }
 
   ngOnDestroy(): void {
